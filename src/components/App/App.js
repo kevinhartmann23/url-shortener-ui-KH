@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { getUrls, postUrl } from '../../apiCalls';
+import { getUrls, postUrl, deleteUrl } from '../../apiCalls';
 import UrlContainer from '../UrlContainer/UrlContainer';
 import UrlForm from '../UrlForm/UrlForm';
 
@@ -38,6 +38,18 @@ const App = () => {
       setAppError(error.message)
     }
   }
+
+  const removeUrl = (id) => {
+    setAppError('')
+    setMessage('')
+
+    try {
+      deleteUrl(id)
+      fetchUrls()
+    } catch (error) {
+      setAppError(error.message)
+    }
+  }
   
   useEffect(() => {
     fetchUrls()
@@ -49,7 +61,7 @@ const App = () => {
           <h1>URL Shortener</h1>
           <UrlForm message={message} appError={appError} setAppError={setAppError} sendInfo={sendInfo}/>
         </header>
-        <UrlContainer urls={urls}/>
+        <UrlContainer urls={urls} removeUrl={removeUrl}/>
       </main>
     );
 }
