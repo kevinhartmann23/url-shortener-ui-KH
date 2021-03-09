@@ -8,17 +8,19 @@ const App = () => {
   const [urls, setUrls] = useState([])
   const [appError, setAppError] = useState()
 
-  async function fetchData() {
+  const fetchUrls = async () => {
+    setAppError('')
+    
     try {
       const data = await getUrls()
-      setUrls(data)
+      setUrls(data.urls)
     } catch (error) {
-      setAppError(error)
+      setAppError(error.message)
     }
   }
-
-  useEffect(async () => {
-    fetchData()
+  
+  useEffect(() => {
+    fetchUrls()
   }, [])
     
   return (
