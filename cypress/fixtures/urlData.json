@@ -1,0 +1,10 @@
+{
+  "urls": [
+    {
+      "id": 1,
+      "long_url": "https://longURL.com/reaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaallyLoooooooooooooooooooongUUUUUUUUUUUURRRRRRRRRRRRLLLLLLLLLLLLLLLL",
+      "short_url": "http://localhost:3001/STUBBING/REALLY/WORKS",
+      "title": "STUBBED YO!"
+    }
+  ]
+}
