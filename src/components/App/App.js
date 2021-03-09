@@ -47,7 +47,7 @@ const App = () => {
       <main className="App">
         <header>
           <h1>URL Shortener</h1>
-          <UrlForm message={message} appError={appError} sendInfo={sendInfo}/>
+          <UrlForm message={message} appError={appError} setAppError={setAppError} sendInfo={sendInfo}/>
         </header>
         <UrlContainer urls={urls}/>
       </main>
