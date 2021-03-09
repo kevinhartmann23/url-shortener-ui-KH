@@ -1,53 +1,43 @@
-import React, { Component } from 'react';
+import React, { useRef } from 'react';
 
-class UrlForm extends Component {
-  constructor(props) {
-    super();
-    this.props = props;
-    this.state = {
-      title: '',
-      urlToShorten: ''
-    };
-  }
-
-  handleNameChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
-  handleSubmit = e => {
+const UrlForm = ({message, appError, sendInfo}) => {
+  const titleRef = useRef('')
+  const urlRef = useRef('')
+  
+  const handleSubmit = e => {
     e.preventDefault();
-    this.clearInputs();
+    sendInfo(titleRef.current.value, urlRef.current.value )
+    clearInputs()
   }
 
-  clearInputs = () => {
-    this.setState({title: '', urlToShorten: ''});
+  const clearInputs = () => {
+    urlRef.current.value = ''
+    titleRef.current.value = ''
   }
 
-  render() {
     return (
       <form>
         <input
           type='text'
           placeholder='Title...'
           name='title'
-          value={this.state.title}
-          onChange={e => this.handleNameChange(e)}
+          ref={titleRef}
         />
 
         <input
           type='text'
           placeholder='URL to Shorten...'
           name='title'
-          value={this.state.title}
-          onChange={e => this.handleNameChange(e)}
+          ref={urlRef}
         />
 
-        <button onClick={e => this.handleSubmit(e)}>
+        <button onClick={handleSubmit}>
           Shorten Please!
         </button>
+        {message && <p>{message}</p>}
+        {appError && <p>{appError}</p>}
       </form>
     )
-  }
 }
 
 export default UrlForm;
