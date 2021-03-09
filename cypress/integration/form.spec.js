@@ -48,4 +48,12 @@ describe('Home Page', () => {
 
       .get('.error-message').should('have.text', 'Unexpected end of JSON input')
   })
+
+  it('should display an error if only one input field is filled out', () => {
+    cy
+      .get('input').eq(0).type('TITLE')
+      .get('button').click()
+
+      .get('.error-message').should('have.text', 'Both input fields are required to submit!')
+  })
 })
