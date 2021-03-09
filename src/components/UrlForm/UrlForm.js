@@ -1,35 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { postUrl } from '../../apiCalls';
 
-const UrlForm = () => {
+const UrlForm = ({message, appError, sendInfo}) => {
   const titleRef = useRef('')
   const urlRef = useRef('')
-  const [appError, setAppError] = useState()
-  const [message, setMessage] = useState()
-
-  const sendInfo = async () => {
-    setAppError('')
-
-    const body = {
-      "long_url": urlRef.current.value,
-      "title": titleRef.current.value
-    }
-
-    try {
-      const post = await postUrl(body)
-      setMessage(post.short_url)
-    } catch (error) {
-      setAppError(error.message)
-    }
-  }
   
   const handleSubmit = e => {
     e.preventDefault();
-    sendInfo()
+    sendInfo(titleRef.current.value, urlRef.current.value )
+    clearInputs()
   }
 
   const clearInputs = () => {
-    
+    urlRef.current.value = ''
+    titleRef.current.value = ''
   }
 
     return (
@@ -51,6 +35,8 @@ const UrlForm = () => {
         <button onClick={handleSubmit}>
           Shorten Please!
         </button>
+        {message && <p>{message}</p>}
+        {appError && <p>{appError}</p>}
       </form>
     )
 }
