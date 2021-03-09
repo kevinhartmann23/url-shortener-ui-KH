@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { postUrl } from '../../apiCalls';
+import React, { useRef } from 'react';
 
 const UrlForm = ({message, appError, sendInfo}) => {
   const titleRef = useRef('')

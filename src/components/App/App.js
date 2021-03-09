@@ -11,6 +11,7 @@ const App = () => {
 
   const fetchUrls = async () => {
     setAppError('')
+    setMessage('')
     
     try {
       const data = await getUrls()
