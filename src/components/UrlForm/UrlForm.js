@@ -34,8 +34,8 @@ const UrlForm = ({message, appError, sendInfo}) => {
         <button onClick={handleSubmit}>
           Shorten Please!
         </button>
-        {message && <p>{message}</p>}
-        {appError && <p>{appError}</p>}
+        {message && <p className='success-message'>{message}</p>}
+        {appError && <p className='error-message'>{appError}</p>}
       </form>
     )
 }
