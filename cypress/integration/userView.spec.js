@@ -27,7 +27,7 @@ describe('Home Page', () => {
     cy 
       .get('input').eq(0).should('have.attr', 'placeholder', 'Title...')
       .get('input').eq(1).should('have.attr', 'placeholder', 'URL to Shorten...')
-      .get('button').should('have.text', 'Shorten Please!')
+      .get('.submit-button').should('have.text', 'Shorten Please!')
   })
 
   it('should fill out form and values should change', () => {

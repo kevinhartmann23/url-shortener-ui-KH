@@ -15,7 +15,7 @@ describe('Home Page', () => {
     cy
       .get('input').eq(0).type('TITLE')
       .get('input').eq(1).type('ajksdhfjkahsdjfhasdf')
-      .get('button').click()
+      .get('.submit-button').click()
   })
 
   it('should display a success message after submit', () => {
@@ -44,7 +44,7 @@ describe('Home Page', () => {
     cy
       .get('input').eq(0).type('TITLE')
       .get('input').eq(1).type('ajksdhfjkahsdjfhasdf')
-      .get('button').click()
+      .get('.submit-button').click()
 
       .get('.error-message').should('have.text', 'Unexpected end of JSON input')
   })
@@ -52,7 +52,7 @@ describe('Home Page', () => {
   it('should display an error if only one input field is filled out', () => {
     cy
       .get('input').eq(0).type('TITLE')
-      .get('button').click()
+      .get('.submit-button').click()
 
       .get('.error-message').should('have.text', 'Both input fields are required to submit!')
   })
